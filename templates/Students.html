@@ -1,0 +1,131 @@
+<div class="contain">
+    <input type="text" placeholder="Digite el ID del Alumno" id="alumno_id" ng-model="idAlumno">
+    <button type="button" id="btnRead" ng-click="buscarAlumno()">Consultar</button>
+
+    <!-- Modal Agregar Alumno -->
+    <button type="button" id="btnAdd" data-bs-toggle="modal" data-bs-target="#AgregarAlumno">
+        Agregar Alumno
+    </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="AgregarAlumno" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="AgregarAlumnoLabel" aria-hidden="true">
+        <div class="modal-dialog">
+
+            <div class="modal-content" >
+
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="AgregarAlumnoLabel">Agregar Alumnos</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body" >
+                    <form id="formAdd" ng-submit="GuardarAlumnos()">
+                        <div class="control">
+                            <label class="modalLab">Clave: </label>
+                            <input class="modalInp" type="text" name="clave" ng-model="Alumno.clave">
+                        </div>
+                        <div class="control">
+                            <label class="modalLab">Matricula: </label>
+                            <input class="modalInp" type="text" name="matricula" ng-model="Alumno.matricula">
+                        </div>
+                        <div class="control">
+                            <label class="modalLab">Apellido paterno: </label>
+                            <input class="modalInp" type="text" name="paterno" ng-model="Alumno.paterno">
+                        </div>
+                        <div class="control">
+                            <label class="modalLab">Apellido Materno: </label>
+                            <input class="modalInp" type="text" name="materno" ng-model="Alumno.materno">
+                        </div>
+                        <div class="control">
+                            <label class="modalLab">Nombre: </label>
+                            <input class="modalInp" type="text" name="nombre" ng-model="Alumno.nombre">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-secondary" data-bs-dismiss="modal" >Agregar</button>
+                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cerrar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Modal  Editar Alumno-->
+    <div class="modal fade" id="EditarAlumno" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="EditarAlumnoLabel" aria-hidden="true">
+        <div class="modal-dialog">
+
+            <div class="modal-content" >
+
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="EditarAlumnoLabel">Agregar Alumnos</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body" >
+                    <form id="formAdd" ng-submit="EditarAlumnos()">
+                        <div class="control">
+                            <label class="modalLab">Clave: </label>
+                            <input class="modalInp" type="text" name="clave" ng-model="Alumno.clave">
+                        </div>
+                        <div class="control">
+                            <label class="modalLab">Matricula: </label>
+                            <input class="modalInp" type="text" name="matricula" ng-model="Alumno.matricula">
+                        </div>
+                        <div class="control">
+                            <label class="modalLab">Apellido paterno: </label>
+                            <input class="modalInp" type="text" name="paterno" ng-model="Alumno.paterno">
+                        </div>
+                        <div class="control">
+                            <label class="modalLab">Apellido Materno: </label>
+                            <input class="modalInp" type="text" name="materno" ng-model="Alumno.materno">
+                        </div>
+                        <div class="control">
+                            <label class="modalLab">Nombre: </label>
+                            <input class="modalInp" type="text" name="nombre" ng-model="Alumno.nombre">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-secondary" data-bs-dismiss="modal" >Agregar</button>
+                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cerrar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- tabla -->
+    <table>
+
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Clave</th>
+                <th>Matricula</th>
+                <th>Nombre</th>
+                <th>Apellido Paterno</th>
+                <th>Apellido Materno</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+
+        <tbody id="listaAlumnos">
+            <tr ng-repeat="Alumno in Alumnos">
+                <td>{{Alumno.id}}</td>
+                <td>{{Alumno.clave}}</td>
+                <td>{{Alumno.matricula}}</td>
+                <td>{{Alumno.nombre}}</td>
+                <td>{{Alumno.paterno}}</td>
+                <td>{{Alumno.materno}}</td>
+                <td class="btn-group-sm" role="group" aria-label="Small button group">
+                    <a href="" data-bs-toggle="modal"data-bs-target="#EditarAlumno" ng-click="getStudent(Alumno.id)" class="btn btn-success">Editar</a>
+                    <a btn class="btn btn-danger" ng-click="eliminarAlumno(Alumno)">Borrar</a>
+                </td>
+            </tr>
+        </tbody>
+
+    </table>
+</div>
